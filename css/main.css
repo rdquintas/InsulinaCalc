@@ -1,0 +1,12 @@
+body {
+    padding: 2rem;
+}
+
+form {
+    padding: 1rem;
+}
+
+.fundo {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.65);
+}
