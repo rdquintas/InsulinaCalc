@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Altera Background Image
     var num = Math.floor(Math.random() * 55) + 1;
-    var str = "url('../img/pattern(" + num + ").png')";
+    var str = "url('/img/pattern(" + num + ").png')";
     $("body").css("background-image", str);
 
     // Algoritmo para campo GLICEMIA
