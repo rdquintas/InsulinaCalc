@@ -1,5 +1,6 @@
 body {
     padding: 1rem;
+    touch-action: manipulation;
 }
 
 form {

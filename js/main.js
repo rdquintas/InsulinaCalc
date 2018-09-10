@@ -78,7 +78,7 @@ $(document).ready(function() {
         doses = doses.toFixed(2);
 
         $('#exampleModal').modal('toggle');
-        $("#modalText").html(doses);
+        $("#modalText").html('<h1>' + doses + '</h1>');
     });
 });
 
