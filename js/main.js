@@ -29,13 +29,13 @@ $(document).ready(function() {
     // Algoritmo para campo PORCOES
     $("#btnPor_m10").click(function() {
         var val = parseFloat($("#inPorcoes").val()) - 1;
-        if (val > 0) {
+        if (val >= 0) {
             $("#inPorcoes").val(val);
         }
     });
     $("#btnPor_m05").click(function() {
         var val = parseFloat($("#inPorcoes").val()) - 0.5;
-        if (val > 0) {
+        if (val >= 0) {
             $("#inPorcoes").val(val);
         }
     });
