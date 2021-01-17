@@ -1,55 +1,72 @@
-$(document).ready(function() {
+
+// var zrq = firebase.database().ref('ricardo')
+var database = firebase.database();
+
+database.ref('/').once('value', function (snapshot) {
+    debugger;
+    console.log(snapshot.val());
+});
+
+// zrq.once('value').then((snapshot) => {
+//     debugger;
+//     var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+
+// });
+
+debugger;
+
+$(document).ready(function () {
     // Altera Background Image
     var num = Math.floor(Math.random() * 55) + 1;
     var str = "url('../img/pattern (" + num + ").png')";
     $("body").css("background-image", str);
 
     // Algoritmo para campo GLICEMIA
-    $("#btnGli_m10").click(function() {
+    $("#btnGli_m10").click(function () {
         var val = parseInt($("#inGlicemia").val()) - 10;
         if (val > 0) {
             $("#inGlicemia").val(val);
         }
     });
-    $("#btnGli_m1").click(function() {
+    $("#btnGli_m1").click(function () {
         var val = parseInt($("#inGlicemia").val()) - 1;
         if (val > 0) {
             $("#inGlicemia").val(val);
         }
     });
-    $("#btnGli_p10").click(function() {
+    $("#btnGli_p10").click(function () {
         var val = parseInt($("#inGlicemia").val()) + 10;
         $("#inGlicemia").val(val);
     });
-    $("#btnGli_p1").click(function() {
+    $("#btnGli_p1").click(function () {
         var val = parseInt($("#inGlicemia").val()) + 1;
         $("#inGlicemia").val(val);
     });
 
     // Algoritmo para campo PORCOES
-    $("#btnPor_m10").click(function() {
+    $("#btnPor_m10").click(function () {
         var val = parseFloat($("#inPorcoes").val()) - 1;
         if (val > 0) {
             $("#inPorcoes").val(val);
         }
     });
-    $("#btnPor_m05").click(function() {
+    $("#btnPor_m05").click(function () {
         var val = parseFloat($("#inPorcoes").val()) - 0.5;
         if (val > 0) {
             $("#inPorcoes").val(val);
         }
     });
-    $("#btnPor_p05").click(function() {
+    $("#btnPor_p05").click(function () {
         var val = parseFloat($("#inPorcoes").val()) + 0.5;
         $("#inPorcoes").val(val);
     });
-    $("#btnPor_p10").click(function() {
+    $("#btnPor_p10").click(function () {
         var val = parseFloat($("#inPorcoes").val()) + 1;
         $("#inPorcoes").val(val);
     });
 
     // Algoritmo para botao LIMPAR 
-    $("#btnLimpar").click(function(evt) {
+    $("#btnLimpar").click(function (evt) {
         evt.preventDefault();
         $("#inGlicemia").val('150');
         $("#inPorcoes").val('0.0');
@@ -58,7 +75,7 @@ $(document).ready(function() {
     });
 
     // Algoritmo para botao CALCULAR 
-    $("#btnCalcular").click(function(evt) {
+    $("#btnCalcular").click(function (evt) {
         evt.preventDefault();
 
         var gli = parseInt($("#inGlicemia").val());
