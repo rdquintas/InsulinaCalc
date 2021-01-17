@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+
+  <body>
+    <h1 class="fundo">Hey Catarina</h1>
+    <form class="fundo">
+      <h4>Glicemia</h4>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <input
+            type="number"
+            class="form-control"
+            id="inGlicemia"
+            value="150"
+            readonly
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <button
+            id="btnGli_m10"
+            type="button"
+            class="btn btn-primary btn-danger"
+          >
+            -10
+          </button>
+          <button
+            id="btnGli_m1"
+            type="button"
+            class="btn btn-primary btn-danger"
+          >
+            -1
+          </button>
+          <button
+            id="btnGli_p1"
+            type="button"
+            class="btn btn-primary btn-success"
+          >
+            +1
+          </button>
+          <button
+            id="btnGli_p10"
+            type="button"
+            class="btn btn-primary btn-success"
+          >
+            +10
+          </button>
+        </div>
+      </div>
+      <h4>Porções</h4>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <input
+            type="number"
+            class="form-control"
+            id="inPorcoes"
+            value="0.0"
+            readonly
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <button
+            id="btnPor_m10"
+            type="button"
+            class="btn btn-primary btn-danger"
+          >
+            -1.0
+          </button>
+          <button
+            id="btnPor_m05"
+            type="button"
+            class="btn btn-primary btn-danger"
+          >
+            -0.5
+          </button>
+          <button
+            id="btnPor_p05"
+            type="button"
+            class="btn btn-primary btn-success"
+          >
+            +0.5
+          </button>
+          <button
+            id="btnPor_p10"
+            type="button"
+            class="btn btn-primary btn-success"
+          >
+            +1.0
+          </button>
+        </div>
+      </div>
+
+      <h4>Opções</h4>
+      <div class="form-group row">
+        <div class="col-sm col-lg-2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="cbCeia" />
+            <label class="form-check-label" for="cbCeia"> Ceia </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="cbManha" />
+            <label class="form-check-label" for="cbManha"> Manhã </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button id="btnCalcular" class="btn btn-primary">Calcular</button>
+          <button id="btnLimpar" class="btn">Limpar</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Estas são as tuas doses de insulina
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="modalText" class="modal-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.2.3/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.2.3/firebase-analytics.js"></script>
+    <script src="/__/firebase/8.2.3/firebase-database.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+  </body>
+</html>
