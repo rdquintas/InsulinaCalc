@@ -1,11 +1,11 @@
 
 // var zrq = firebase.database().ref('ricardo')
-var database = firebase.database();
+// var database = firebase.database();
 
-database.ref('/').once('value', function (snapshot) {
-    debugger;
-    console.log(snapshot.val());
-});
+// database.ref('/').once('value', function (snapshot) {
+//     debugger;
+//     console.log(snapshot.val());
+// });
 
 // zrq.once('value').then((snapshot) => {
 //     debugger;
@@ -13,7 +13,7 @@ database.ref('/').once('value', function (snapshot) {
 
 // });
 
-debugger;
+// debugger;
 
 $(document).ready(function () {
     // Altera Background Image
