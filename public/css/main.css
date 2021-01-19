@@ -1,12 +1,37 @@
 body {
-    padding: 2rem;
+  /* padding: 2rem; */
 }
 
 form {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .fundo {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.65);
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.btn {
+  border: 1px solid #fff;
+}
+
+.error-msg {
+  color: blue;
+  font-family: monospace;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
 }
