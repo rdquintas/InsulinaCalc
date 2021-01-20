@@ -63,9 +63,8 @@ html {
   white-space: nowrap;
 }
 
-/* 
-@media (min-width: 980px) {
+@media (max-width: 980px) {
   .zrq-page-configuration form {
-    width: 60%;
+    padding: 0.5rem;
   }
-} */
+}
