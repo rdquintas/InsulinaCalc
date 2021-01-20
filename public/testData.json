@@ -1,0 +1,109 @@
+{
+    "name": "Catarina Quintas",
+    "email": "quintascatarina1805@gmail.com",
+    "lastModifiedDate": null,
+    "estados": {
+        "doenca": 1.0,
+        "jejum": 1.0,
+        "menstruacao": 1.0,
+        "exercicio": 1.0
+    },
+    "config": {
+        "0": {
+            "insulinaPorcao": 0.5,
+            "fsiCorreccao": 60
+        },
+        "1": {
+            "insulinaPorcao": 0.5,
+            "fsiCorreccao": 60
+        },
+        "2": {
+            "insulinaPorcao": 0.5,
+            "fsiCorreccao": 60
+        },
+        "3": {
+            "insulinaPorcao": 0.5,
+            "fsiCorreccao": 60
+        },
+        "4": {
+            "insulinaPorcao": 0.5,
+            "fsiCorreccao": 60
+        },
+        "5": {
+            "insulinaPorcao": 0.5,
+            "fsiCorreccao": 60
+        },
+        "6": {
+            "insulinaPorcao": 0.5,
+            "fsiCorreccao": 60
+        },
+        "7": {
+            "insulinaPorcao": 1.8,
+            "fsiCorreccao": 40
+        },
+        "8": {
+            "insulinaPorcao": 1.8,
+            "fsiCorreccao": 40
+        },
+        "9": {
+            "insulinaPorcao": 1.8,
+            "fsiCorreccao": 40
+        },
+        "10": {
+            "insulinaPorcao": 1.8,
+            "fsiCorreccao": 40
+        },
+        "11": {
+            "insulinaPorcao": 1.8,
+            "fsiCorreccao": 40
+        },
+        "12": {
+            "insulinaPorcao": 0.8,
+            "fsiCorreccao": 50
+        },
+        "13": {
+            "insulinaPorcao": 0.8,
+            "fsiCorreccao": 50
+        },
+        "14": {
+            "insulinaPorcao": 0.8,
+            "fsiCorreccao": 50
+        },
+        "15": {
+            "insulinaPorcao": 0.8,
+            "fsiCorreccao": 50
+        },
+        "16": {
+            "insulinaPorcao": 1.0,
+            "fsiCorreccao": 50
+        },
+        "17": {
+            "insulinaPorcao": 1.0,
+            "fsiCorreccao": 50
+        },
+        "18": {
+            "insulinaPorcao": 1.0,
+            "fsiCorreccao": 50
+        },
+        "19": {
+            "insulinaPorcao": 1.5,
+            "fsiCorreccao": 50
+        },
+        "20": {
+            "insulinaPorcao": 1.5,
+            "fsiCorreccao": 50
+        },
+        "21": {
+            "insulinaPorcao": 1.5,
+            "fsiCorreccao": 50
+        },
+        "22": {
+            "insulinaPorcao": 0.5,
+            "fsiCorreccao": 50
+        },
+        "23": {
+            "insulinaPorcao": 0.5,
+            "fsiCorreccao": 50
+        }
+    }
+}
