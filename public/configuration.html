@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="Ricardo Quintas" />
-    <title>InsulinCalc</title>
+    <title>InsulinCalc | Configuração</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css" />
@@ -38,7 +38,7 @@
     <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico" />
     <meta name="theme-color" content="#7952b3" />
   </head>
-  <body class="zrq-page-index">
+  <body class="zrq-page-configuration">
     <header>
       <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
@@ -65,8 +65,8 @@
               <h4 class="text-white">Menu</h4>
               <ul class="list-unstyled">
                 <li>
-                  <a href="/configuration.html" class="text-white"
-                    >Configurar perfil</a
+                  <a href="/index.html" class="text-white"
+                    >Ir para calculadora</a
                   >
                 </li>
                 <li><a href="#" class="text-white">Instruções</a></li>
@@ -108,129 +108,36 @@
         </div>
       </div>
     </header>
+    <form id="configurationForm" class="row g-3">
+      <h3>Aqui podes configurar o teu perfil</h3>
 
-    <form class="zrq-form-padding">
-      <div class="container-fluid">
-        <!-- Glicémia ============================================ -->
-        <div class="row">
-          <div class="col zrq-text-right">
-            <div class="btn-group" role="group">
-              <button
-                id="btnGli_m10"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                -10
-              </button>
-              <button
-                id="btnGli_m1"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                -1
-              </button>
-            </div>
-          </div>
-          <div class="col">
-            <input
-              type="number"
-              class="form-control"
-              id="inGlicemia"
-              placeholder="Glicémia..."
-              readonly
-            />
-          </div>
-          <div class="col">
-            <div class="btn-group" role="group">
-              <button
-                id="btnGli_p1"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                +1
-              </button>
-              <button
-                id="btnGli_p10"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                +10
-              </button>
-            </div>
-          </div>
-        </div>
-        <!-- Porções ============================================ -->
-        <br />
-        <div class="row">
-          <div class="col zrq-text-right">
-            <div class="btn-group" role="group">
-              <button
-                id="btnPor_m10"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                -1.0
-              </button>
-              <button
-                id="btnPor_m05"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                -0.5
-              </button>
-            </div>
-          </div>
-          <div class="col">
-            <input
-              type="number"
-              class="form-control"
-              id="inPorcoes"
-              placeholder="Porções..."
-              readonly
-            />
-          </div>
-          <div class="col">
-            <div class="btn-group" role="group">
-              <button
-                id="btnPor_p05"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                +0.5
-              </button>
-              <button
-                id="btnPor_p10"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                +1.0
-              </button>
-            </div>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col"></div>
-          <div class="col text-center">
-            <div class="btn-group" role="group">
-              <button
-                id="btnCalcular"
-                type="button"
-                class="btn btn-primary btn-lg"
-              >
-                Calcular
-              </button>
-              <button
-                id="btnLimpar"
-                type="button"
-                class="btn btn-secondary btn-lg"
-              >
-                Limpar
-              </button>
-            </div>
-          </div>
-          <div class="col"></div>
-        </div>
+      <div class="col-md-3">
+        <label for="name" class="form-label">Nome</label>
+        <input
+          id="zrq-form-name"
+          type="text"
+          class="form-control"
+          placeholder="Primeiro e último nome..."
+        />
+      </div>
+      <div class="col-md-9"></div>
+      <div class="col-md-3">
+        <label for="email" class="form-label">Email</label>
+        <input id="zrq-form-email" type="email" class="form-control" />
+      </div>
+      <div class="col-md-9"></div>
+
+      <div class="col-sm-12 col-md-9 col-lg-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Hora</th>
+              <th scope="col">Insulina/HC</th>
+              <th scope="col">FSI correcção</th>
+            </tr>
+          </thead>
+          <tbody id="zrq-table-body" />
+        </table>
       </div>
     </form>
     <br />
@@ -276,6 +183,7 @@
 
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
-    <script src="/js/index.js"></script>
+
+    <script src="/js/configuration.js"></script>
   </body>
 </html>

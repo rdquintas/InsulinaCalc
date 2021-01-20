@@ -5,7 +5,26 @@
   background-color: rgba(0, 0, 0, 0.65);
 } */
 
-.zrq-label {
+/* .bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+} */
+
+.zrq-top-icon {
+  color: red;
+  margin-right: 6px;
+}
+
+.zrq-error-msg {
+  color: blue;
+  font-size: 16px;
+  font-family: monospace;
+}
+
+.zrq-page-index .zrq-label {
   /* padding: 10px; */
   width: 30%;
   margin: 0 auto;
@@ -15,43 +34,34 @@
   background-color: rgba(0, 0, 0, 0.65);
 }
 
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-.btn {
+.zrq-page-index .btn {
   border: 1px solid #fff;
 }
 
-.zrq-btn-width {
+.zrq-page-index .zrq-btn-width {
   width: 60px;
 }
 
-.zrq-top-icon {
-  color: red;
-  margin-right: 6px;
-}
-
-.zrq-form-padding {
+.zrq-page-index .zrq-form-padding {
   padding-top: 30px;
 }
 
-.zrq-error-msg {
-  color: blue;
-  font-size: 16px;
-  font-family: monospace;
-}
-
-.zrq-text-right {
+.zrq-page-index .zrq-text-right {
   text-align: right;
 }
 
-/* @media (min-width: 980px) {
-  .zrq-card {
-    width: 30%;
+.zrq-page-configuration form {
+  padding: 3rem;
+}
+
+.zrq-page-configuration form table th {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* 
+@media (min-width: 980px) {
+  .zrq-page-configuration form {
+    width: 60%;
   }
 } */

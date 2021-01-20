@@ -13,7 +13,6 @@
 
 // });
 
-// debugger;
 var _oConfigData;
 var _oModal;
 const MODAL_TYPE_ERROR = 1;
@@ -21,52 +20,22 @@ const MODAL_TYPE_INFO = 2;
 const MODAL_TYPE_RESULTS = 3;
 
 function initializeConfigurationData() {
-    _oConfigData = {
-        name: "Catarina Quintas",
-        email: "quintascatarina1805@gmail.com",
-        lastModifiedDate: new Date("1-15-2000 14:35:20"),
-        estados: {
-            doenca: 1.0,
-            jejum: 1.0,
-            menstruacao: 1.0,
-            exercicio: 1.0
-        },
-        config: {
-            "0": { insulinaPorcao: 0.5, fsiCorreccao: 60 },
-            "1": { insulinaPorcao: 0.5, fsiCorreccao: 60 },
-            "2": { insulinaPorcao: 0.5, fsiCorreccao: 60 },
-            "3": { insulinaPorcao: 0.5, fsiCorreccao: 60 },
-            "4": { insulinaPorcao: 0.5, fsiCorreccao: 60 },
-            "5": { insulinaPorcao: 0.5, fsiCorreccao: 60 },
-            "6": { insulinaPorcao: 0.5, fsiCorreccao: 60 },
-            "7": { insulinaPorcao: 1.8, fsiCorreccao: 40 },
-            "8": { insulinaPorcao: 1.8, fsiCorreccao: 40 },
-            "9": { insulinaPorcao: 1.8, fsiCorreccao: 40 },
-            "10": { insulinaPorcao: 1.8, fsiCorreccao: 40 },
-            "11": { insulinaPorcao: 1.8, fsiCorreccao: 40 },
-            "12": { insulinaPorcao: 0.8, fsiCorreccao: 50 },
-            "13": { insulinaPorcao: 0.8, fsiCorreccao: 50 },
-            "14": { insulinaPorcao: 0.8, fsiCorreccao: 50 },
-            "15": { insulinaPorcao: 0.8, fsiCorreccao: 50 },
-            "16": { insulinaPorcao: 1.0, fsiCorreccao: 50 },
-            "17": { insulinaPorcao: 1.0, fsiCorreccao: 50 },
-            "18": { insulinaPorcao: 1.0, fsiCorreccao: 50 },
-            "19": { insulinaPorcao: 1.5, fsiCorreccao: 50 },
-            "20": { insulinaPorcao: 1.5, fsiCorreccao: 50 },
-            "21": { insulinaPorcao: 1.5, fsiCorreccao: 50 },
-            "22": { insulinaPorcao: 0.5, fsiCorreccao: 50 },
-            "23": { insulinaPorcao: 0.5, fsiCorreccao: 50 }
+    $.getJSON("/testData.json", function (oData) {
+        if (oData) {
+            _oConfigData = oData;
+            _oConfigData.lastModifiedDate = new Date("1-15-2000 14:35:20");
+            initializeFormFields();
+        } else {
+            throw "Não foi possível obter os dados de configuração";
         }
-    }
-
-    if (!_oConfigData) {
+    }).fail(function () {
         throw "Não foi possível obter os dados de configuração";
-    }
+    });
 }
 
 function changeBackground() {
-    var num = Math.floor(Math.random() * 55) + 1;
-    var str = "url('../img/pattern (" + num + ").png')";
+    var num = Math.floor(Math.random() * 100) + 1;
+    var str = "url('../img/patterns/pattern (" + num + ").png')";
     $("body").css("background-image", str);
 }
 
@@ -198,12 +167,12 @@ function showModal(sMsg, oDados, sType) {
             $("#modalCSS").addClass(["bg-danger", "text-white", "bg-warning", "text-black"]);
             break;
         case MODAL_TYPE_RESULTS:
-            sTitle = "Doses de Insulina";
+            sTitle = "Doses de insulina a administrar";
             if (oDados) {
                 validaDados(oDados);
                 if (oDados.calculoDasDosesInsulina <= 0) {
                     $("#modalCSS").addClass(["bg-warning", "text-black"]);
-                    sBody += "<p>Atenção: valor da insulina é menor ou igual a zero!!</p>";
+                    sBody += "<p>Atenção: valor calculado da insulina é menor ou igual a zero!!</p>";
                     sBody += "<h3>" + oDados.calculoDasDosesInsulina + "</h3>";
                 } else {
                     $("#modalCSS").addClass(["bg-primary", "text-white"]);
@@ -211,10 +180,12 @@ function showModal(sMsg, oDados, sType) {
                 }
                 sBody += "<div class='zrq-error-msg'>========";
                 sBody += "<br>VALORES UTILIZADOS PARA O CÁLCULO";
-                sBody += "<br>Glicemia Introduzida: " + oDados.glicemiaIntroduzida;
-                sBody += "<br>Porções Introduzidas: " + oDados.porcoesIntroduzidas;
-                sBody += "<br>Insulina Configurada para as " + oDados.horaCorrente + "h: " + oDados.registoInsulina;
-                sBody += "<br>FSI Configurado para as " + oDados.horaCorrente + "h: " + oDados.registoFSI;
+                sBody += "<br>(A) Glicemia introduzida: " + oDados.glicemiaIntroduzida;
+                sBody += "<br>(B) Porções introduzidas: " + oDados.porcoesIntroduzidas;
+                sBody += "<br>(C) Insulina configurada para as " + oDados.horaCorrente + "h: " + oDados.registoInsulina;
+                sBody += "<br>(D) FSI configurado para as " + oDados.horaCorrente + "h: " + oDados.registoFSI;
+                sBody += "<br><br>Fórmula utilizada para o cálculo:";
+                sBody += "<br>Doses de insulina = (A-100)/D) + (BxC)";
                 sBody += "</div>";
             } else {
                 throw "Houve um erro no cáclculo. showModal não tem oDados";
@@ -312,7 +283,10 @@ function initializeModal() {
 }
 
 function initializeFormFields() {
-    if (!_oConfigData) {
+    if (_oConfigData) {
+        $("#zrq-nome").html("Olá " + _oConfigData.name);
+    }
+    else {
         throw "Não existem dados de configuração. Não é possível correr a função initializeFormFields";
     }
 }
@@ -321,10 +295,9 @@ function initializeFormFields() {
 $(document).ready(function () {
     try {
         initializeModal();
-        initializeConfigurationData();
-        changeBackground();
-        initializeFormFields();
         initializeButtonEvents();
+        changeBackground();
+        initializeConfigurationData();
     } catch (error) {
         showModal("Não foi posível arrancar com a app.", error, true);
     }
