@@ -2,7 +2,7 @@ var _oConfigData;
 var _oModal;
 
 function initializeConfigurationData() {
-    $.getJSON("/testData.json", function (oData) {
+    $.getJSON("testData.json", function (oData) {
         if (oData) {
             _oConfigData = oData;
             _oConfigData.lastModifiedDate = new Date("1-15-2000 14:35:20");

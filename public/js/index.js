@@ -20,7 +20,7 @@ const MODAL_TYPE_INFO = 2;
 const MODAL_TYPE_RESULTS = 3;
 
 function initializeConfigurationData() {
-    $.getJSON("/testData.json", function (oData) {
+    $.getJSON("testData.json", function (oData) {
         if (oData) {
             _oConfigData = oData;
             _oConfigData.lastModifiedDate = new Date("1-15-2000 14:35:20");
