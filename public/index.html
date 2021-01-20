@@ -110,7 +110,7 @@
         <!-- Glicémia ============================================ -->
         <div class="row">
           <div class="col zrq-text-right">
-            <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="btn-group" role="group">
               <button
                 id="btnGli_m10"
                 type="button"
@@ -137,7 +137,7 @@
             />
           </div>
           <div class="col">
-            <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="btn-group" role="group">
               <button
                 id="btnGli_p1"
                 type="button"
@@ -159,7 +159,7 @@
         <br />
         <div class="row">
           <div class="col zrq-text-right">
-            <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="btn-group" role="group">
               <button
                 id="btnPor_m10"
                 type="button"
@@ -186,7 +186,7 @@
             />
           </div>
           <div class="col">
-            <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="btn-group" role="group">
               <button
                 id="btnPor_p05"
                 type="button"
@@ -208,13 +208,11 @@
         <div class="row">
           <div class="col"></div>
           <div class="col text-center">
-            <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="btn-group" role="group">
               <button
                 id="btnCalcular"
                 type="button"
                 class="btn btn-primary btn-lg"
-                data-toggle="modal"
-                data-target="#exampleModal"
               >
                 Calcular
               </button>
@@ -236,7 +234,7 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="myModal"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
@@ -244,8 +242,8 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title" id="modalTitle">Ocorreu um erro</h5>
+          <div id="modalCSS" class="modal-header">
+            <h5 class="modal-title" id="modalTitle"></h5>
           </div>
           <div id="modalText" class="modal-body"></div>
           <div class="modal-footer">

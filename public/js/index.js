@@ -14,6 +14,11 @@
 // });
 
 // debugger;
+var _oConfigData;
+var _oModal;
+const MODAL_TYPE_ERROR = 1;
+const MODAL_TYPE_INFO = 2;
+const MODAL_TYPE_RESULTS = 3;
 
 function initializeConfigurationData() {
     _oConfigData = {
@@ -147,32 +152,110 @@ function initializeButtonEvents() {
         evt.preventDefault();
         $("#inGlicemia").val(null);
         $("#inPorcoes").val(null);
-        // $('#cbCeia').prop('checked', false);
-        // $('#cbManha').prop('checked', false);
+        changeBackground();
     });
 
     // Algoritmo para botao CALCULAR 
     $("#btnCalcular").click(function (evt) {
         try {
             evt.preventDefault();
-            $('#exampleModal').modal('toggle');
-
             var iGlicemia = parseInt($("#inGlicemia").val());
             var iPorcoesHC = parseFloat($("#inPorcoes").val());
-
-            $("#modalText").html(calculaDosesInsulina(iGlicemia, iPorcoesHC));
+            var oDados = calculaDosesInsulina(iGlicemia, iPorcoesHC);
+            changeBackground();
+            showModal(null, oDados, MODAL_TYPE_RESULTS);
         } catch (sError) {
-            showError("Não foi possivel efectuar o calculo.", sError);
+            showModal("Não foi possivel efectuar o calculo", sError, MODAL_TYPE_ERROR);
         }
     });
 }
 
-function showError(sMsg, sError) {
-    var str = sMsg + "<div class='zrq-error-msg'>========<br>" + sError + "</div>";
-    $("#modalText").html(str);
+
+
+function showModal(sMsg, oDados, sType) {
+    var sTitle = "";
+    var sBody = "";
+
+    if (!oDados) {
+        oDados = "";
+    }
+
+    $("#modalCSS").removeClass(["bg-danger", "bg-primary", "bg-warning", "text-white"]);
+
+    switch (sType) {
+        case MODAL_TYPE_ERROR:
+            if (!sMsg) {
+                throw "Houve um erro. showModal não tem sMsg";
+            }
+
+            sTitle = "Ocorreu um erro";
+            if (oDados) {
+                sBody = sMsg + "<div class='zrq-error-msg'>========<br>" + JSON.stringify(oDados)
+                    + "</div>";
+            } else {
+                sBody = sMsg;
+            }
+            $("#modalCSS").addClass(["bg-danger", "text-white", "bg-warning", "text-black"]);
+            break;
+        case MODAL_TYPE_RESULTS:
+            sTitle = "Doses de Insulina";
+            if (oDados) {
+                validaDados(oDados);
+                if (oDados.calculoDasDosesInsulina <= 0) {
+                    $("#modalCSS").addClass(["bg-warning", "text-black"]);
+                    sBody += "<p>Atenção: valor da insulina é menor ou igual a zero!!</p>";
+                    sBody += "<h3>" + oDados.calculoDasDosesInsulina + "</h3>";
+                } else {
+                    $("#modalCSS").addClass(["bg-primary", "text-white"]);
+                    sBody += "<h3>" + oDados.calculoDasDosesInsulina + "</h3>";
+                }
+                sBody += "<div class='zrq-error-msg'>========";
+                sBody += "<br>VALORES UTILIZADOS PARA O CÁLCULO";
+                sBody += "<br>Glicemia Introduzida: " + oDados.glicemiaIntroduzida;
+                sBody += "<br>Porções Introduzidas: " + oDados.porcoesIntroduzidas;
+                sBody += "<br>Insulina Configurada para as " + oDados.horaCorrente + "h: " + oDados.registoInsulina;
+                sBody += "<br>FSI Configurado para as " + oDados.horaCorrente + "h: " + oDados.registoFSI;
+                sBody += "</div>";
+            } else {
+                throw "Houve um erro no cáclculo. showModal não tem oDados";
+            }
+            break;
+    }
+
+    $("#modalTitle").html(sTitle);
+    $("#modalText").html(sBody);
+    _oModal.show()
+}
+
+function validaDados(oDados) {
+    if (!oDados.registoInsulina) {
+        throw "Registo oDados.registoInsulina inexistente";
+    }
+
+    if (!oDados.registoFSI) {
+        throw "Registo oDados.registoFSI inexistente";
+    }
+
+    if (!oDados.calculoDasDosesInsulina) {
+        throw "Registo oDados.calculoDasDosesInsulina inexistente";
+    }
+
+    if (!oDados.horaCorrente) {
+        throw "Registo oDados.horaCorrente inexistente";
+    }
+
+    if (!oDados.glicemiaIntroduzida) {
+        throw "Registo oDados.glicemiaIntroduzida inexistente";
+    }
+
+    if (!oDados.porcoesIntroduzidas) {
+        throw "Registo oDados.porcoesIntroduzidas inexistente";
+    }
 }
 
 function calculaDosesInsulina(iGlicemia, iPorcoesHC) {
+    var oDados = {};
+
     if (!iGlicemia) {
         throw "Não é possível efectuar cáclulo sem valor da GLICEMIA";
     }
@@ -182,11 +265,16 @@ function calculaDosesInsulina(iGlicemia, iPorcoesHC) {
     }
 
     var now = new Date();
-    var iInsulina = getInsulina(now);
-    var iFSI = getFSI(now);
-    var iDoses = ((iGlicemia - 100) / iFSI) + (iPorcoesHC * iInsulina);
-    iDoses = iDoses.toFixed(2);
-    return iDoses;
+
+    oDados.registoInsulina = getInsulina(now);
+    oDados.registoFSI = getFSI(now);
+    oDados.calculoDasDosesInsulina = ((iGlicemia - 100) / oDados.registoFSI) + (iPorcoesHC * oDados.registoInsulina);
+    oDados.calculoDasDosesInsulina = oDados.calculoDasDosesInsulina.toFixed(2);
+    oDados.horaCorrente = now.getHours();
+    oDados.glicemiaIntroduzida = iGlicemia;
+    oDados.porcoesIntroduzidas = iPorcoesHC;
+
+    return oDados;
 }
 
 function getInsulina(now) {
@@ -219,22 +307,25 @@ function getFSI(now) {
     }
 }
 
+function initializeModal() {
+    _oModal = new bootstrap.Modal(document.getElementById('myModal'))
+}
+
 function initializeFormFields() {
-    debugger;
     if (!_oConfigData) {
         throw "Não existem dados de configuração. Não é possível correr a função initializeFormFields";
     }
 }
 
-var _oConfigData;
 
 $(document).ready(function () {
     try {
+        initializeModal();
         initializeConfigurationData();
         changeBackground();
         initializeFormFields();
         initializeButtonEvents();
     } catch (error) {
-        showError("Não foi possível arrancar com a app.", error);
+        showModal("Não foi posível arrancar com a app.", error, true);
     }
 });
