@@ -13,6 +13,10 @@
   user-select: none;
 } */
 
+html {
+  touch-action: manipulation;
+}
+
 .zrq-top-icon {
   color: red;
   margin-right: 6px;
