@@ -68,57 +68,85 @@ function changeBackground() {
 function initializeButtonEvents() {
 
     $("#btnGli_m10").click(function () {
-        var val = parseInt($("#inGlicemia").val()) - 10;
-        if (val > 0) {
+        var val = parseFloat($("#inGlicemia").val())
+        val = isNaN(val) ? 0 : val;
+        val -= 10;
+        if (val <= 0) {
+            $("#inGlicemia").val(null);
+        }
+        else {
             $("#inGlicemia").val(val);
         }
     });
 
     $("#btnGli_m1").click(function () {
-        var val = parseInt($("#inGlicemia").val()) - 1;
-        if (val > 0) {
+        var val = parseFloat($("#inGlicemia").val())
+        val = isNaN(val) ? 0 : val;
+        val -= 1;
+        if (val <= 0) {
+            $("#inGlicemia").val(null);
+        }
+        else {
             $("#inGlicemia").val(val);
         }
     });
 
     $("#btnGli_p10").click(function () {
-        var val = parseInt($("#inGlicemia").val()) + 10;
+        var val = parseFloat($("#inGlicemia").val())
+        val = isNaN(val) ? 0 : val;
+        val += 10;
         $("#inGlicemia").val(val);
     });
 
     $("#btnGli_p1").click(function () {
-        var val = parseInt($("#inGlicemia").val()) + 1;
+        var val = parseFloat($("#inGlicemia").val())
+        val = isNaN(val) ? 0 : val;
+        val += 1;
         $("#inGlicemia").val(val);
     });
 
     $("#btnPor_m10").click(function () {
-        var val = parseFloat($("#inPorcoes").val()) - 1;
-        if (val > 0) {
+        var val = parseFloat($("#inPorcoes").val())
+        val = isNaN(val) ? 0 : val;
+        val -= 1;
+        if (val <= 0) {
+            $("#inPorcoes").val(null);
+        }
+        else {
             $("#inPorcoes").val(val);
         }
     });
 
     $("#btnPor_m05").click(function () {
-        var val = parseFloat($("#inPorcoes").val()) - 0.5;
-        if (val > 0) {
+        var val = parseFloat($("#inPorcoes").val())
+        val = isNaN(val) ? 0 : val;
+        val -= 0.5;
+        if (val <= 0) {
+            $("#inPorcoes").val(null);
+        }
+        else {
             $("#inPorcoes").val(val);
         }
     });
 
     $("#btnPor_p05").click(function () {
-        var val = parseFloat($("#inPorcoes").val()) + 0.5;
+        var val = parseFloat($("#inPorcoes").val())
+        val = isNaN(val) ? 0 : val;
+        val += 0.5;
         $("#inPorcoes").val(val);
     });
 
     $("#btnPor_p10").click(function () {
-        var val = parseFloat($("#inPorcoes").val()) + 1;
+        var val = parseFloat($("#inPorcoes").val())
+        val = isNaN(val) ? 0 : val;
+        val += 1;
         $("#inPorcoes").val(val);
     });
 
     $("#btnLimpar").click(function (evt) {
         evt.preventDefault();
-        $("#inGlicemia").val('150');
-        $("#inPorcoes").val('0.0');
+        $("#inGlicemia").val(null);
+        $("#inPorcoes").val(null);
         // $('#cbCeia').prop('checked', false);
         // $('#cbManha').prop('checked', false);
     });
@@ -140,7 +168,7 @@ function initializeButtonEvents() {
 }
 
 function showError(sMsg, sError) {
-    var str = sMsg + "<div class='error-msg'>========<br>" + sError + "</div>";
+    var str = sMsg + "<div class='zrq-error-msg'>========<br>" + sError + "</div>";
     $("#modalText").html(str);
 }
 

@@ -1,13 +1,15 @@
-body {
-  /* padding: 2rem; */
-}
-
-form {
-  padding: 1rem;
-}
-
-.fundo {
+/* .fundo {
   padding: 10px;
+  border-radius: 6px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.65);
+} */
+
+.zrq-label {
+  /* padding: 10px; */
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
   border-radius: 6px;
   color: white;
   background-color: rgba(0, 0, 0, 0.65);
@@ -25,13 +27,31 @@ form {
   border: 1px solid #fff;
 }
 
-.error-msg {
+.zrq-btn-width {
+  width: 60px;
+}
+
+.zrq-top-icon {
+  color: red;
+  margin-right: 6px;
+}
+
+.zrq-form-padding {
+  padding-top: 30px;
+}
+
+.zrq-error-msg {
   color: blue;
+  font-size: 16px;
   font-family: monospace;
 }
 
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
+.zrq-text-right {
+  text-align: right;
 }
+
+/* @media (min-width: 980px) {
+  .zrq-card {
+    width: 30%;
+  }
+} */
