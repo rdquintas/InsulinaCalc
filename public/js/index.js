@@ -43,9 +43,7 @@ function changeBackground() {
         sNumber = "0" + sNumber;
     }
 
-    debugger;
-
-    var str = "url('../img/patterns/image" + sNumber + ".png')";
+    var str = "url('img/patterns/image" + sNumber + ".png')";
     $("body").css("background-image", str);
 }
 
