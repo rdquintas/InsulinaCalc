@@ -118,6 +118,17 @@
       <div class="container-fluid">
         <!-- Glicémia ============================================ -->
         <div class="row">
+          <div class="col">
+            <input
+              type="number"
+              class="form-control"
+              id="inGlicemia"
+              placeholder="Glicémia..."
+              readonly
+            />
+          </div>
+        </div>
+        <div class="row">
           <div class="col zrq-text-right">
             <div class="btn-group" role="group">
               <button
@@ -135,15 +146,6 @@
                 -1
               </button>
             </div>
-          </div>
-          <div class="col">
-            <input
-              type="number"
-              class="form-control"
-              id="inGlicemia"
-              placeholder="Glicémia..."
-              readonly
-            />
           </div>
           <div class="col">
             <div class="btn-group" role="group">
@@ -167,24 +169,6 @@
         <!-- Porções ============================================ -->
         <br />
         <div class="row">
-          <div class="col zrq-text-right">
-            <div class="btn-group" role="group">
-              <button
-                id="btnPor_m10"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                -1.0
-              </button>
-              <button
-                id="btnPor_m05"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                -0.5
-              </button>
-            </div>
-          </div>
           <div class="col">
             <input
               type="number"
@@ -194,22 +178,42 @@
               readonly
             />
           </div>
-          <div class="col">
-            <div class="btn-group" role="group">
-              <button
-                id="btnPor_p05"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                +0.5
-              </button>
-              <button
-                id="btnPor_p10"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                +1.0
-              </button>
+          <div class="row">
+            <div class="col zrq-text-right">
+              <div class="btn-group" role="group">
+                <button
+                  id="btnPor_m10"
+                  type="button"
+                  class="btn btn-primary zrq-btn-width"
+                >
+                  -1.0
+                </button>
+                <button
+                  id="btnPor_m05"
+                  type="button"
+                  class="btn btn-primary zrq-btn-width"
+                >
+                  -0.5
+                </button>
+              </div>
+            </div>
+            <div class="col">
+              <div class="btn-group" role="group">
+                <button
+                  id="btnPor_p05"
+                  type="button"
+                  class="btn btn-primary zrq-btn-width"
+                >
+                  +0.5
+                </button>
+                <button
+                  id="btnPor_p10"
+                  type="button"
+                  class="btn btn-primary zrq-btn-width"
+                >
+                  +1.0
+                </button>
+              </div>
             </div>
           </div>
         </div>
