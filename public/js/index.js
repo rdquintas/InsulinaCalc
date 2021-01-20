@@ -34,8 +34,18 @@ function initializeConfigurationData() {
 }
 
 function changeBackground() {
-    var num = Math.floor(Math.random() * 100) + 1;
-    var str = "url('../img/patterns/pattern (" + num + ").png')";
+    var sNumber = (Math.floor(Math.random() * 101) + 1).toString();
+    if (sNumber.length === 1) {
+        sNumber = "00" + sNumber;
+    }
+
+    if (sNumber.length === 2) {
+        sNumber = "0" + sNumber;
+    }
+
+    debugger;
+
+    var str = "url('../img/patterns/image" + sNumber + ".png')";
     $("body").css("background-image", str);
 }
 
