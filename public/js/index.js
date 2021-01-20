@@ -186,15 +186,9 @@ function showModal(sMsg, oDados, sType) {
                     $("#modalCSS").addClass(["bg-primary", "text-white"]);
                     sBody += "<h3>" + oDados.calculoDasDosesInsulina + "</h3>";
                 }
-                sBody += "<div class='zrq-error-msg'>========";
-                sBody += "<br>VALORES UTILIZADOS PARA O CÁLCULO";
-                sBody += "<br>(A) Glicemia introduzida: " + oDados.glicemiaIntroduzida;
-                sBody += "<br>(B) Porções introduzidas: " + oDados.porcoesIntroduzidas;
-                sBody += "<br>(C) Insulina configurada para as " + oDados.horaCorrente + "h: " + oDados.registoInsulina;
-                sBody += "<br>(D) FSI configurado para as " + oDados.horaCorrente + "h: " + oDados.registoFSI;
-                sBody += "<br><br>Fórmula utilizada para o cálculo:";
-                sBody += "<br>Doses de insulina = (A-100)/D) + (BxC)";
-                sBody += "</div>";
+
+                sBody += getAccordeonWithDetails(oDados);
+
             } else {
                 throw "Houve um erro no cáclculo. showModal não tem oDados";
             }
@@ -205,6 +199,32 @@ function showModal(sMsg, oDados, sType) {
     $("#modalText").html(sBody);
     _oModal.show()
 }
+
+function getAccordeonWithDetails(oDados) {
+    var sHtml = "";
+    sHtml += "<div class='accordion' id='accordionExample'>";
+    sHtml += "<div class='accordion-item'>";
+    sHtml += "<h2 class='accordion-header' id='headingOne'>";
+    sHtml += "<button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>";
+    sHtml += "Queres saber mais detalhes sobre este cálculo ?";
+    sHtml += "</button>";
+    sHtml += "</h2>";
+    sHtml += "<div id='collapseOne' class='accordion-collapse collapse hide' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>";
+    sHtml += "<div class='accordion-body'>";
+    sHtml += "<br>(A) Glicemia introduzida: " + oDados.glicemiaIntroduzida;
+    sHtml += "<br>(B) Porções introduzidas: " + oDados.porcoesIntroduzidas;
+    sHtml += "<br>(C) Insulina configurada para as " + oDados.horaCorrente + "h: " + oDados.registoInsulina;
+    sHtml += "<br>(D) FSI configurado para as " + oDados.horaCorrente + "h: " + oDados.registoFSI;
+    sHtml += "<br><br>Fórmula utilizada para o cálculo:";
+    sHtml += "<br><strong>Doses de insulina = (A-100)/D) + (BxC)</strong>";
+    sHtml += "</div>";
+    sHtml += "</div>";
+    sHtml += "</div>";
+    sHtml += "</div>";
+
+    return sHtml;
+}
+
 
 function validaDados(oDados) {
     if (!oDados.registoInsulina) {
