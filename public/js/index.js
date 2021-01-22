@@ -47,6 +47,11 @@ function changeBackground() {
     $("body").css("background-image", str);
 }
 
+function onAlteraGlicemia(sValue) {
+    $("#inGlicemia").val(parseInt(sValue)
+    );
+}
+
 function initializeButtonEvents() {
 
     $("#btnGli_m10").click(function () {

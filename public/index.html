@@ -128,7 +128,17 @@
           </div>
         </div>
         <div class="row">
-          <div class="col zrq-text-right">
+          <label for="customRange1" class="form-label">Example range</label>
+          <input
+            value="150"
+            type="range"
+            class="form-range"
+            id="customRange1"
+            min="0"
+            max="450"
+            onchange="onAlteraGlicemia(this.value);"
+          />
+          <!-- <div class="col zrq-text-right">
             <div class="btn-group" role="group">
               <button
                 id="btnGli_m10"
@@ -163,7 +173,7 @@
                 +10
               </button>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- Porções ============================================ -->
         <br />
