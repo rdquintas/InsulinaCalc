@@ -1,6 +1,7 @@
 {
     "greeting": "Olá",
     "menu-config": "Configurar perfil",
+    "menu-home": "Ir para calculadora",
     "menu-documentation": "Instruções",
     "menu-signout": "Sair",
     "menu-info1": "Esta aplicação foi desenvolvida por",
@@ -31,5 +32,13 @@
     "msg-error-getinsulina": "getInsulina não funciona sem data definida",
     "msg-error-getinsulina-config": "Não foi possível obter insulinaPorcao configurada para a hora:",
     "msg-error-getfsi": "getFSI não funciona sem data definida",
-    "msg-error-getfsi-config": "Não foi possível obter fsiCorreccao configurada para a hora:"
+    "msg-error-getfsi-config": "Não foi possível obter fsiCorreccao configurada para a hora:",
+    "config-window-title": "InsulinCalc | Configuração",
+    "config-title": "Aqui podes configurar o teu perfil",
+    "config-name": "Nome",
+    "config-name-placeholder": "Primeiro e último nome...",
+    "config-email": "Email",
+    "config-tbl-hour": "Hora",
+    "config-tbl-insulin": "Insulina/HC",
+    "config-tbl-fsi": "FSI correcção"
 }

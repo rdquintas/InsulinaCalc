@@ -17,7 +17,8 @@ function initializeConfigurationData() {
 
 function initializeFormFields() {
     if (_oConfigData) {
-        $("#zrq-nome").html("Olá " + _oConfigData.name);
+        $("#zrq-nome").html(" " + _oConfigData.name + "!");
+        $("#zrq-form-name").attr("placeholder", $.localize.data.i18n["config-name-placeholder"]);
         $("#zrq-form-name").val(_oConfigData.name);
         $("#zrq-form-email").val(_oConfigData.email);
 
@@ -66,8 +67,29 @@ function getInputFieldFsi(sIndex, iValue) {
     return str;
 }
 
+
+function initializeLocalization(sLanguage) {
+    try {
+        if (!sLanguage) {
+            sLanguage = "en";
+        }
+
+        var aAvailableLangs = ["en", "pt"];
+        if ((aAvailableLangs.indexOf(sLanguage) > -1) === false) {
+            sLanguage = "en";
+        }
+
+        $("[data-localize]").localize("i18n", { language: sLanguage })
+    } catch (error) {
+        // just in case some stupid shit happens
+        $("[data-localize]").localize("i18n", { language: "en" });
+    }
+}
+
+
 $(document).ready(function () {
     try {
+        initializeLocalization(navigator.language || navigator.userLanguage);
         // initializeModal();
         // initializeButtonEvents();
         initializeConfigurationData();

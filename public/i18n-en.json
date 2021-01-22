@@ -1,6 +1,7 @@
 {
     "greeting": "Hi",
     "menu-config": "Configuration",
+    "menu-home": "Go to calculator",
     "menu-documentation": "Documentation",
     "menu-signout": "Sign out",
     "menu-info1": "This app was developed by",
@@ -31,5 +32,13 @@
     "msg-error-getinsulina": "getInsulin does not work without a set date",
     "msg-error-getinsulina-config": "It wasn't possible to obtain insulinaPorcao configured for this hour:",
     "msg-error-getfsi": "getFSI does not work without a set date",
-    "msg-error-getfsi-config": "It wasn't possible to obtain fsiCorreccao configured for this hour:"
+    "msg-error-getfsi-config": "It wasn't possible to obtain fsiCorreccao configured for this hour:",
+    "config-window-title": "InsulinCalc | Configuration",
+    "config-title": "Here you can configure your profile",
+    "config-name": "Name",
+    "config-name-placeholder": "First and last name...",
+    "config-email": "Email",
+    "config-tbl-hour": "Hour",
+    "config-tbl-insulin": "Insulin/CH",
+    "config-tbl-fsi": "FSI correction"
 }
