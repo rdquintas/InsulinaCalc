@@ -48,19 +48,17 @@ function changeBackground() {
 }
 
 function onAlteraGlicemia(sValue) {
-    $("#inGlicemia").val(parseInt(sValue)
-    );
+    $("#inGlicemia").val(parseInt(sValue));
 }
 
 function onAlteraPorcoes(sValue) {
-    $("#inPorcoes").val(parseFloat(sValue)
-    );
+    $("#inPorcoes").val(parseFloat(sValue));
 }
 
 function onBotaoLimpar(oButton) {
     $("#inGlicemia").val(null);
     $("#inPorcoes").val(null);
-    $("#rangeGlicemia").val("197");
+    $("#rangeGlicemia").val("223");
     $("#rangePorcoes").val("15");
     changeBackground();
 }
