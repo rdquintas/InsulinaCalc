@@ -98,8 +98,19 @@ html {
   padding-top: 15px;
 }
 
+.zrq-long-user-name {
+  display: inline-block;
+  /* width: 60px; */
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 980px) {
   .zrq-page-configuration form {
     padding: 0.5rem;
+  }
+  .zrq-long-user-name {
+    width: 250px;
   }
 }

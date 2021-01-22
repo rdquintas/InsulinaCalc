@@ -104,7 +104,7 @@
               />
             </svg>
 
-            <strong>
+            <strong class="zrq-long-user-name">
               <span data-localize="greeting"></span>
               <span id="zrq-nome"></span>
             </strong>
@@ -144,7 +144,24 @@
         <input id="zrq-form-email" type="email" class="form-control" />
       </div>
       <div class="col-md-9"></div>
-
+      <div class="col-md-3">
+        <label
+          for="language"
+          class="form-label"
+          data-localize="config-language"
+        ></label>
+        <select id="zrq-language" class="form-select">
+          <option
+            value="en"
+            data-localize="config-language-en"
+            selected
+          ></option>
+          <option value="pt" data-localize="config-language-pt"></option>
+          <option value="es" data-localize="config-language-es"></option>
+          <option value="fr" data-localize="config-language-fr"></option>
+        </select>
+      </div>
+      <div class="col-md-9"></div>
       <div class="col-sm-12 col-md-9 col-lg-6">
         <table class="table table-striped">
           <thead>

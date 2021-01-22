@@ -24,7 +24,7 @@ function initializeConfigurationData() {
         if (oData) {
             _oConfigData = oData;
             _oConfigData.lastModifiedDate = new Date("1-15-2000 14:35:20");
-            initializeFormFields();
+            initializeLocalization(_oConfigData.selectedLanguage);
         } else {
             throw $.localize.data.i18n["msg-error-config-fails"];
         }
@@ -247,10 +247,11 @@ function initializeFormFields() {
     }
 }
 
+
 function initializeLocalization(sLanguage) {
     try {
         if (!sLanguage) {
-            sLanguage = "en";
+            sLanguage = (navigator.language || navigator.userLanguage) || "en";
         }
 
         var aAvailableLangs = ["en", "pt"];
@@ -258,16 +259,29 @@ function initializeLocalization(sLanguage) {
             sLanguage = "en";
         }
 
-        $("[data-localize]").localize("i18n", { language: sLanguage })
+        $("[data-localize]").localize("i18n", {
+            language: sLanguage,
+            callback: function (data, defaultCallback) {
+                defaultCallback(data);
+                initializeFormFields();
+            }
+        });
+
     } catch (error) {
         // just in case some stupid shit happens
-        $("[data-localize]").localize("i18n", { language: "en" });
+        $("[data-localize]").localize("i18n", {
+            language: "en",
+            callback: function (data, defaultCallback) {
+                defaultCallback(data);
+                initializeFormFields();
+            }
+        });
     }
 }
 
+
 $(document).ready(function () {
     try {
-        initializeLocalization(navigator.language || navigator.userLanguage);
         initializeModal();
         changeBackground();
         initializeConfigurationData();

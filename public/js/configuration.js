@@ -6,7 +6,7 @@ function initializeConfigurationData() {
         if (oData) {
             _oConfigData = oData;
             _oConfigData.lastModifiedDate = new Date("1-15-2000 14:35:20");
-            initializeFormFields();
+            initializeLocalization(_oConfigData.selectedLanguage);
         } else {
             throw "Não foi possível obter os dados de configuração";
         }
@@ -20,6 +20,7 @@ function initializeFormFields() {
         $("#zrq-nome").html(" " + _oConfigData.name + "!");
         $("#zrq-form-name").attr("placeholder", $.localize.data.i18n["config-name-placeholder"]);
         $("#zrq-form-name").val(_oConfigData.name);
+        $('#zrq-language').val(_oConfigData.selectedLanguage);
         $("#zrq-form-email").val(_oConfigData.email);
 
         var sHtml = "";
@@ -71,7 +72,7 @@ function getInputFieldFsi(sIndex, iValue) {
 function initializeLocalization(sLanguage) {
     try {
         if (!sLanguage) {
-            sLanguage = "en";
+            sLanguage = (navigator.language || navigator.userLanguage) || "en";
         }
 
         var aAvailableLangs = ["en", "pt"];
@@ -79,17 +80,29 @@ function initializeLocalization(sLanguage) {
             sLanguage = "en";
         }
 
-        $("[data-localize]").localize("i18n", { language: sLanguage })
+        $("[data-localize]").localize("i18n", {
+            language: sLanguage,
+            callback: function (data, defaultCallback) {
+                defaultCallback(data);
+                initializeFormFields();
+            }
+        });
+
     } catch (error) {
         // just in case some stupid shit happens
-        $("[data-localize]").localize("i18n", { language: "en" });
+        $("[data-localize]").localize("i18n", {
+            language: "en",
+            callback: function (data, defaultCallback) {
+                defaultCallback(data);
+                initializeFormFields();
+            }
+        });
     }
 }
 
 
 $(document).ready(function () {
     try {
-        initializeLocalization(navigator.language || navigator.userLanguage);
         // initializeModal();
         // initializeButtonEvents();
         initializeConfigurationData();
