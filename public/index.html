@@ -128,52 +128,16 @@
           </div>
         </div>
         <div class="row">
-          <label for="customRange1" class="form-label">Example range</label>
           <input
-            value="150"
+            id="rangeGlicemia"
+            value="197"
             type="range"
-            class="form-range"
-            id="customRange1"
+            class="form-range zrq-range"
             min="0"
-            max="450"
+            max="400"
+            oninput="onAlteraGlicemia(this.value);"
             onchange="onAlteraGlicemia(this.value);"
           />
-          <!-- <div class="col zrq-text-right">
-            <div class="btn-group" role="group">
-              <button
-                id="btnGli_m10"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                -10
-              </button>
-              <button
-                id="btnGli_m1"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                -1
-              </button>
-            </div>
-          </div>
-          <div class="col">
-            <div class="btn-group" role="group">
-              <button
-                id="btnGli_p1"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                +1
-              </button>
-              <button
-                id="btnGli_p10"
-                type="button"
-                class="btn btn-primary zrq-btn-width"
-              >
-                +10
-              </button>
-            </div>
-          </div> -->
         </div>
         <!-- Porções ============================================ -->
         <br />
@@ -188,42 +152,17 @@
             />
           </div>
           <div class="row">
-            <div class="col zrq-text-right">
-              <div class="btn-group" role="group">
-                <button
-                  id="btnPor_m10"
-                  type="button"
-                  class="btn btn-primary zrq-btn-width"
-                >
-                  -1.0
-                </button>
-                <button
-                  id="btnPor_m05"
-                  type="button"
-                  class="btn btn-primary zrq-btn-width"
-                >
-                  -0.5
-                </button>
-              </div>
-            </div>
-            <div class="col">
-              <div class="btn-group" role="group">
-                <button
-                  id="btnPor_p05"
-                  type="button"
-                  class="btn btn-primary zrq-btn-width"
-                >
-                  +0.5
-                </button>
-                <button
-                  id="btnPor_p10"
-                  type="button"
-                  class="btn btn-primary zrq-btn-width"
-                >
-                  +1.0
-                </button>
-              </div>
-            </div>
+            <input
+              id="rangePorcoes"
+              value="15"
+              type="range"
+              class="form-range zrq-range"
+              min="0"
+              max="30"
+              step="0.5"
+              oninput="onAlteraPorcoes(this.value);"
+              onchange="onAlteraPorcoes(this.value);"
+            />
           </div>
         </div>
         <br />
@@ -235,6 +174,7 @@
                 id="btnCalcular"
                 type="button"
                 class="btn btn-primary btn-lg"
+                onclick="onBotaoCalcular(this);"
               >
                 Calcular
               </button>
@@ -242,6 +182,7 @@
                 id="btnLimpar"
                 type="button"
                 class="btn btn-secondary btn-lg"
+                onclick="onBotaoLimpar(this);"
               >
                 Limpar
               </button>

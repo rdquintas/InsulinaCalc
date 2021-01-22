@@ -54,6 +54,40 @@ html {
   text-align: right;
 }
 
+.zrq-page-index .zrq-range {
+  margin-top: 15px;
+}
+
+/* Special styling for WebKit/Blink */
+.zrq-page-index .zrq-range::-webkit-slider-thumb {
+  margin-top: -15px;
+  -webkit-appearance: none;
+  border: 5px solid #fff;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+}
+
+/* All the same stuff for Firefox */
+.zrq-page-index .zrq-range::-moz-range-thumb {
+  margin-top: -15px;
+  -webkit-appearance: none;
+  border: 5px solid #fff;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+.zrq-page-index .zrq-range::-ms-thumb {
+  margin-top: -15px;
+  -webkit-appearance: none;
+  border: 5px solid #fff;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+}
+
 .zrq-page-configuration form {
   padding: 3rem;
 }
