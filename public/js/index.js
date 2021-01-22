@@ -60,8 +60,8 @@ function onAlteraPorcoes(sValue) {
 function onBotaoLimpar(oButton) {
     $("#inGlicemia").val(null);
     $("#inPorcoes").val(null);
-    $("#rangeGlicemia").val(197);
-    $("#rangePorcoes").val(15);
+    $("#rangeGlicemia").val("197");
+    $("#rangePorcoes").val("15");
     changeBackground();
 }
 
