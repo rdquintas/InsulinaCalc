@@ -26,10 +26,10 @@ function initializeConfigurationData() {
             _oConfigData.lastModifiedDate = new Date("1-15-2000 14:35:20");
             initializeFormFields();
         } else {
-            throw "Não foi possível obter os dados de configuração";
+            throw $.localize.data.i18n["msg-error-config-fails"];
         }
     }).fail(function () {
-        throw "Não foi possível obter os dados de configuração";
+        throw $.localize.data.i18n["msg-error-config-fails"];
     });
 }
 
@@ -71,7 +71,7 @@ function onBotaoCalcular(oButton) {
         changeBackground();
         showModal(null, oDados, MODAL_TYPE_RESULTS);
     } catch (sError) {
-        showModal("Não foi possivel efectuar o calculo", sError, MODAL_TYPE_ERROR);
+        showModal($.localize.data.i18n["msg-error-calc-fails"], sError, MODAL_TYPE_ERROR);
     }
 }
 
@@ -88,10 +88,10 @@ function showModal(sMsg, oDados, sType) {
     switch (sType) {
         case MODAL_TYPE_ERROR:
             if (!sMsg) {
-                throw "Houve um erro. showModal não tem sMsg";
+                throw $.localize.data.i18n["msg-error-smodal"];
             }
 
-            sTitle = "Ocorreu um erro";
+            sTitle = $.localize.data.i18n["modal-title-error"];
             if (oDados) {
                 sBody = sMsg + "<div class='zrq-error-msg'>========<br>" + JSON.stringify(oDados)
                     + "</div>";
@@ -101,12 +101,12 @@ function showModal(sMsg, oDados, sType) {
             $("#modalCSS").addClass(["bg-danger", "text-white", "bg-warning", "text-black"]);
             break;
         case MODAL_TYPE_RESULTS:
-            sTitle = "Doses de insulina a administrar";
+            sTitle = $.localize.data.i18n["modal-title-doses"];
             if (oDados) {
                 validaDados(oDados);
                 if (oDados.calculoDasDosesInsulina <= 0) {
                     $("#modalCSS").addClass(["bg-warning", "text-black"]);
-                    sBody += "<p>Atenção: valor calculado da insulina é menor ou igual a zero!!</p>";
+                    sBody += "<p>" + $.localize.data.i18n["modal-title-warning"] + "</p>";
                     sBody += "<h3>" + oDados.calculoDasDosesInsulina + "</h3>";
                 } else {
                     $("#modalCSS").addClass(["bg-primary", "text-white"]);
@@ -116,7 +116,7 @@ function showModal(sMsg, oDados, sType) {
                 sBody += getAccordeonWithDetails(oDados);
 
             } else {
-                throw "Houve um erro no cáclculo. showModal não tem oDados";
+                throw $.localize.data.i18n["msg-error-smodal-calc"];
             }
             break;
     }
@@ -132,17 +132,17 @@ function getAccordeonWithDetails(oDados) {
     sHtml += "<div class='accordion-item'>";
     sHtml += "<h2 class='accordion-header' id='headingOne'>";
     sHtml += "<button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>";
-    sHtml += "Queres saber mais detalhes sobre este cálculo ?";
+    sHtml += $.localize.data.i18n["modal-title-accordion"];
     sHtml += "</button>";
     sHtml += "</h2>";
     sHtml += "<div id='collapseOne' class='accordion-collapse collapse hide' aria-labelledby='headingOne' data-bs-parent='#accordionExample'>";
     sHtml += "<div class='accordion-body'>";
-    sHtml += "<br>(A) Glicemia introduzida: " + oDados.glicemiaIntroduzida;
-    sHtml += "<br>(B) Porções introduzidas: " + oDados.porcoesIntroduzidas;
-    sHtml += "<br>(C) Insulina configurada para as " + oDados.horaCorrente + "h: " + oDados.registoInsulina;
-    sHtml += "<br>(D) FSI configurado para as " + oDados.horaCorrente + "h: " + oDados.registoFSI;
-    sHtml += "<br><br>Fórmula utilizada para o cálculo:";
-    sHtml += "<br><strong>Doses de insulina = (A-100)/D) + (BxC)</strong>";
+    sHtml += "<br>(A) " + $.localize.data.i18n["modal-calc-glicemia"] + ": " + oDados.glicemiaIntroduzida;
+    sHtml += "<br>(B) " + $.localize.data.i18n["modal-calc-portions"] + ": " + oDados.porcoesIntroduzidas;
+    sHtml += "<br>(C) " + $.localize.data.i18n["modal-calc-insulina"] + " " + oDados.horaCorrente + "h: " + oDados.registoInsulina;
+    sHtml += "<br>(D) " + $.localize.data.i18n["modal-calc-fsi"] + " " + oDados.horaCorrente + "h: " + oDados.registoFSI;
+    sHtml += "<br><br>" + $.localize.data.i18n["modal-calc-title"] + ":";
+    sHtml += "<br><strong>" + $.localize.data.i18n["modal-calc-doses"] + " = (A-100)/D) + (BxC)</strong>";
     sHtml += "</div>";
     sHtml += "</div>";
     sHtml += "</div>";
@@ -182,11 +182,11 @@ function calculaDosesInsulina(iGlicemia, iPorcoesHC) {
     var oDados = {};
 
     if (!iGlicemia) {
-        throw "Não é possível efectuar cáclulo sem valor da GLICEMIA";
+        throw $.localize.data.i18n["msg-error-no-glicemia"];
     }
 
     if (!iPorcoesHC) {
-        throw "Não é possível efectuar cáclulo sem valor das PORÇÕES";
+        throw $.localize.data.i18n["msg-error-no-portions"];
     }
 
     var now = new Date();
@@ -204,7 +204,7 @@ function calculaDosesInsulina(iGlicemia, iPorcoesHC) {
 
 function getInsulina(now) {
     if (!now) {
-        throw "getInsulina não funciona sem data definida";
+        throw $.localize.data.i18n["msg-error-getinsulina"];
     }
 
     var currentHour = now.getHours();
@@ -213,13 +213,13 @@ function getInsulina(now) {
     if (currentRecord && currentRecord.insulinaPorcao) {
         return currentRecord.insulinaPorcao;
     } else {
-        throw "Não foi possível obter insulinaPorcao configurada para a hora: " + currentHour;
+        throw $.localize.data.i18n["msg-error-getinsulina-config"] + " " + currentHour;
     }
 }
 
 function getFSI(now) {
     if (!now) {
-        throw "getFSI não funciona sem data definida";
+        throw $.localize.data.i18n["msg-error-getfsi"];
     }
 
     var currentHour = now.getHours();
@@ -228,7 +228,7 @@ function getFSI(now) {
     if (currentRecord && currentRecord.fsiCorreccao) {
         return currentRecord.fsiCorreccao;
     } else {
-        throw "Não foi possível obter fsiCorreccao configurada para a hora: " + currentHour;
+        throw $.localize.data.i18n["msg-error-getfsi-config"] + " " + currentHour;
     }
 }
 
@@ -238,20 +238,40 @@ function initializeModal() {
 
 function initializeFormFields() {
     if (_oConfigData) {
-        $("#zrq-nome").html("Olá " + _oConfigData.name);
+        $("#zrq-nome").html(" " + _oConfigData.name + "!");
+        $("#inGlicemia").attr("placeholder", $.localize.data.i18n["placeholder-glicemia"]);
+        $("#inPorcoes").attr("placeholder", $.localize.data.i18n["placeholder-portions"]);
     }
     else {
-        throw "Não existem dados de configuração. Não é possível correr a função initializeFormFields";
+        throw $.localize.data.i18n["msg-error-app-config"];
     }
 }
 
+function initializeLocalization(sLanguage) {
+    try {
+        if (!sLanguage) {
+            sLanguage = "en";
+        }
+
+        var aAvailableLangs = ["en", "pt"];
+        if ((aAvailableLangs.indexOf(sLanguage) > -1) === false) {
+            sLanguage = "en";
+        }
+
+        $("[data-localize]").localize("i18n", { language: sLanguage })
+    } catch (error) {
+        // just in case some stupid shit happens
+        $("[data-localize]").localize("i18n", { language: "en" });
+    }
+}
 
 $(document).ready(function () {
     try {
+        initializeLocalization(navigator.language || navigator.userLanguage);
         initializeModal();
         changeBackground();
         initializeConfigurationData();
     } catch (error) {
-        showModal("Não foi posível arrancar com a app.", error, true);
+        showModal($.localize.data.i18n["msg-error-app-start"], error, true);
     }
 });
