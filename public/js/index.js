@@ -34,7 +34,7 @@ function initializeConfigurationData() {
 }
 
 function changeBackground() {
-    var sNumber = (Math.floor(Math.random() * 101) + 1).toString();
+    var sNumber = (Math.floor(Math.random() * 100) + 1).toString();
     if (sNumber.length === 1) {
         sNumber = "00" + sNumber;
     }
