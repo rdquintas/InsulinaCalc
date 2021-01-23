@@ -100,7 +100,6 @@ html {
 
 .zrq-long-user-name {
   display: inline-block;
-  /* width: 60px; */
   white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;
@@ -111,6 +110,6 @@ html {
     padding: 0.5rem;
   }
   .zrq-long-user-name {
-    width: 250px;
+    width: 220px;
   }
 }

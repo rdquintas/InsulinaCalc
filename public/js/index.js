@@ -58,7 +58,7 @@ function onAlteraPorcoes(sValue) {
 function onBotaoLimpar(oButton) {
     $("#inGlicemia").val(null);
     $("#inPorcoes").val(null);
-    $("#rangeGlicemia").val("223");
+    $("#rangeGlicemia").val("225");
     $("#rangePorcoes").val("15");
     changeBackground();
 }
@@ -270,7 +270,7 @@ function initializeLocalization(sLanguage) {
     } catch (error) {
         // just in case some stupid shit happens
         $("[data-localize]").localize("i18n", {
-            language: "en",
+            language: sLanguage,
             callback: function (data, defaultCallback) {
                 defaultCallback(data);
                 initializeFormFields();
