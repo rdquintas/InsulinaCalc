@@ -165,9 +165,10 @@ function validaDados(oDados) {
         throw "Registo oDados.calculoDasDosesInsulina inexistente";
     }
 
-    if (!oDados.horaCorrente && oDados.horaCorrente !== 0) {
-        throw "Registo oDados.horaCorrente inexistente";
-    }
+    // TODO:  rever isto!
+    // if (!oDados.horaCorrente && oDados.horaCorrente !== 0) {
+    //     throw "Registo oDados.horaCorrente inexistente";
+    // }
 
     if (!oDados.glicemiaIntroduzida) {
         throw "Registo oDados.glicemiaIntroduzida inexistente";
