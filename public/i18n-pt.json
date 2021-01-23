@@ -12,7 +12,7 @@
     "btn-save": "Gravar",
     "btn-cancel": "Cancelar",
     "placeholder-glicemia": "Glicemia...",
-    "placeholder-portions": "Porções de Hidratos Carbono...",
+    "placeholder-portions": "Porções HC...",
     "modal-title-doses": "Doses de insulina a administrar",
     "modal-title-error": "Ocorreu um erro",
     "modal-title-warning": "Atenção: valor calculado da insulina é menor ou igual a zero!!",
