@@ -9,6 +9,8 @@
     "btn-calculate": "Calculate",
     "btn-clear": "Clear",
     "btn-close": "Close",
+    "btn-save": "Save",
+    "btn-cancel": "Cancel",
     "placeholder-glicemia": "Blood sugar...",
     "placeholder-portions": "Carbohydrate portions...",
     "modal-title-doses": "Insulin doses to be administered",

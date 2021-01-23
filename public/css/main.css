@@ -98,6 +98,10 @@ html {
   padding-top: 15px;
 }
 
+.zrq-page-configuration .zrq-footer {
+  padding: 5px;
+}
+
 .zrq-long-user-name {
   font-size: 1rem !important;
   display: inline-block;

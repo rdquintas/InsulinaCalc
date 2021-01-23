@@ -9,6 +9,8 @@
     "btn-calculate": "Calcular",
     "btn-clear": "Limpar",
     "btn-close": "Fechar",
+    "btn-save": "Gravar",
+    "btn-cancel": "Cancelar",
     "placeholder-glicemia": "Glicemia...",
     "placeholder-portions": "Porções de Hidratos Carbono...",
     "modal-title-doses": "Doses de insulina a administrar",
