@@ -55,14 +55,14 @@ function getIndexContent(sIndex) {
 }
 
 function getInputFieldInsulina(sIndex, iValue) {
-    var str = "<input type='text' class='form-control'";
+    var str = "<input type='number' class='form-control'";
     str += " id='" + `zrq-form-config-${sIndex}-insulina` + "'";
     str += " value='" + iValue + "' />";
     return str;
 }
 
 function getInputFieldFsi(sIndex, iValue) {
-    var str = "<input type='text' class='form-control'";
+    var str = "<input type='number' class='form-control'";
     str += " id='" + `zrq-form-config-${sIndex}-fsi` + "'";
     str += " value='" + iValue + "' />";
     return str;
