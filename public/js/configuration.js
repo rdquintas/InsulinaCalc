@@ -57,6 +57,7 @@ function getIndexContent(sIndex) {
 function getInputFieldInsulina(sIndex, iValue) {
     var str = "<input type='number' class='form-control'";
     str += " id='" + `zrq-form-config-${sIndex}-insulina` + "'";
+    str += " name='" + `zrq-form-config-${sIndex}-insulina` + "'";
     str += " value='" + iValue + "' />";
     return str;
 }
@@ -64,10 +65,21 @@ function getInputFieldInsulina(sIndex, iValue) {
 function getInputFieldFsi(sIndex, iValue) {
     var str = "<input type='number' class='form-control'";
     str += " id='" + `zrq-form-config-${sIndex}-fsi` + "'";
+    str += " name='" + `zrq-form-config-${sIndex}-fsi` + "'";
     str += " value='" + iValue + "' />";
     return str;
 }
+function onBtnSave() {
+    var str = $("form#configurationForm").serialize();
+}
 
+// function isInt(n) {
+//     return Number(n) === n && n % 1 === 0;
+// }
+
+// function isFloat(n) {
+//     return Number(n) === n && n % 1 !== 0;
+// }
 
 function initializeLocalization(sLanguage) {
     try {

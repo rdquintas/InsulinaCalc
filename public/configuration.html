@@ -132,7 +132,12 @@
           class="form-label"
           data-localize="config-name"
         ></label>
-        <input id="zrq-form-name" type="text" class="form-control" />
+        <input
+          id="zrq-form-name"
+          name="zrq-form-name"
+          type="text"
+          class="form-control"
+        />
       </div>
       <div class="col-md-9"></div>
       <div class="col-md-3">
@@ -141,7 +146,12 @@
           class="form-label"
           data-localize="config-email"
         ></label>
-        <input id="zrq-form-email" type="email" class="form-control" />
+        <input
+          id="zrq-form-email"
+          name="zrq-form-email"
+          type="email"
+          class="form-control"
+        />
       </div>
       <div class="col-md-9"></div>
       <div class="col-md-3">
@@ -150,15 +160,11 @@
           class="form-label"
           data-localize="config-language"
         ></label>
-        <select id="zrq-language" class="form-select">
-          <option
-            value="en"
-            data-localize="config-language-en"
-            selected
-          ></option>
+        <select id="zrq-language" name="zrq-language" class="form-select">
+          <option value="en" data-localize="config-language-en"></option>
           <option value="pt" data-localize="config-language-pt"></option>
-          <option value="es" data-localize="config-language-es"></option>
-          <option value="fr" data-localize="config-language-fr"></option>
+          <!-- <option value="es" data-localize="config-language-es"></option> -->
+          <!-- <option value="fr" data-localize="config-language-fr"></option> -->
         </select>
       </div>
       <div class="col-md-9"></div>
@@ -182,11 +188,13 @@
         type="button"
         data-localize="btn-save"
         class="btn btn-success"
+        onclick="onBtnSave();"
       ></button>
       <button
         type="button"
         data-localize="btn-cancel"
         class="btn btn-secondary"
+        onclick="onBtnCancel();"
       ></button>
     </footer>
 
