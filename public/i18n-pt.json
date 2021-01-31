@@ -38,6 +38,7 @@
     "config-window-title": "InsulinCalc | Configuração",
     "config-title": "Aqui podes configurar o teu perfil",
     "config-name": "Nome",
+    "config-lastmodif": "Última actualização",
     "config-name-placeholder": "Primeiro e último nome...",
     "config-email": "Email",
     "config-language": "Idioma",

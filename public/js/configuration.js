@@ -5,7 +5,6 @@ function initializeConfigurationData() {
     $.getJSON("testData.json", function (oData) {
         if (oData) {
             _oConfigData = oData;
-            _oConfigData.lastModifiedDate = new Date("1-15-2000 14:35:20");
             initializeLocalization(_oConfigData.selectedLanguage);
         } else {
             throw "Não foi possível obter os dados de configuração";
@@ -20,6 +19,7 @@ function initializeFormFields() {
         $("#zrq-nome").html(" " + _oConfigData.name + "!");
         $("#zrq-form-name").attr("placeholder", $.localize.data.i18n["config-name-placeholder"]);
         $("#zrq-form-name").val(_oConfigData.name);
+        $("#zrq-form-lastmodif").val(_oConfigData.lastModifiedDate);
         $('#zrq-language').val(_oConfigData.selectedLanguage);
         $("#zrq-form-email").val(_oConfigData.email);
 
