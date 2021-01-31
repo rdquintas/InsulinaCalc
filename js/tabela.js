@@ -40,9 +40,8 @@ function loadTabelaAlimentos() {
                 return 0;
             });
 
-
             $.LoadingOverlay("hide");
-            initializeFoodTable();
+
         } else {
             throw "Não foi possível obter os dados da tabelaAlimentos";
         }
@@ -51,11 +50,17 @@ function loadTabelaAlimentos() {
     });
 }
 
-function initializeFoodTable() {
+function refreshTableDOM(aSelectedItems) {
+    $("#zrq-table-body tr").remove();
+
     var sHtml = "";
 
-    for (let index = 0; index < _aTabelaAlimentos.length; index++) {
-        const oElement = _aTabelaAlimentos[index];
+    if (!aSelectedItems) {
+        aSelectedItems = _aTabelaAlimentos;
+    }
+
+    for (let index = 0; index < aSelectedItems.length; index++) {
+        const oElement = aSelectedItems[index];
         sHtml += "<tr>";
         sHtml += "<th scope='row'>" + oElement[ALIMENTO.CODIGO] + "</th>";
         sHtml += "<td>" + oElement[ALIMENTO.NOME_ALIMENTO] + "</td>";
@@ -63,6 +68,7 @@ function initializeFoodTable() {
         sHtml += "<td><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-info-circle-fill' viewBox='0 0 16 16'><path d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'/></svg></td>";
         sHtml += "</tr>";
     }
+
     $("#zrq-table-body").html(sHtml);
 }
 
@@ -167,20 +173,19 @@ function initializeLocalization(sLanguage) {
 
 function onBtnClear(sValue) {
     $("#zrq-form-pesquisar").val("");
-    filterTable("");
+    $("#zrq-table-body tr").remove();
 }
 
 function filterTable(sValue) {
     var rePattern = new RegExp(sValue, "i");
 
-    $('#zrq-food-table').find('tr').each(function () {
-        if (!($(this).find('td').text().search(rePattern) >= 0)) {
-            $(this).not('.myHead').hide();
-        }
-        if (($(this).find('td').text().search(rePattern) >= 0)) {
-            $(this).show();
-        }
-    });
+    var arr = $(_aTabelaAlimentos)
+        .filter(function (i, n) {
+            return n[ALIMENTO.NOME_ALIMENTO].search(rePattern) === 0;
+        });
+
+    refreshTableDOM(arr);
+
 }
 
 $('#zrq-form-pesquisar').on('keyup', function (oEvent) {
@@ -188,9 +193,12 @@ $('#zrq-form-pesquisar').on('keyup', function (oEvent) {
 
     if (oEvent.keyCode === 27) {
         $("#zrq-form-pesquisar").val("");
-        sValue = "";
+        $("#zrq-table-body tr").remove();
+    } else {
+        if (sValue.length >= 2) {
+            filterTable(sValue);
+        }
     }
-    filterTable(sValue);
 });
 
 function initializeModal() {
