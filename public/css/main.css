@@ -102,6 +102,11 @@ html {
   padding: 5px;
 }
 
+.zrq-page-index .zrq-form-padding {
+  margin: 0 auto;
+  max-width: 35%;
+}
+
 .zrq-long-user-name {
   font-size: 1rem !important;
   display: inline-block;
@@ -111,6 +116,10 @@ html {
 }
 
 @media (max-width: 980px) {
+  .zrq-page-index .zrq-form-padding {
+    max-width: 100%;
+  }
+
   .zrq-page-configuration form {
     padding: 0.5rem;
   }
