@@ -1,6 +1,6 @@
 {
     "greeting": "Olá",
-    "menu-config": "Configurar perfil",
+    "menu-config": "Dados de perfil",
     "menu-home": "Ir para calculadora",
     "menu-documentation": "Instruções",
     "menu-tabela": "Tabela de Alimentos",
@@ -37,7 +37,7 @@
     "msg-error-getfsi": "getFSI não funciona sem data definida",
     "msg-error-getfsi-config": "Não foi possível obter fsiCorreccao configurada para a hora:",
     "config-window-title": "InsulinCalc | Configuração",
-    "config-title": "Aqui podes configurar o teu perfil",
+    "config-title": "Esta é a configuração do teu perfil",
     "config-name": "Nome",
     "config-lastmodif": "Última actualização",
     "config-name-placeholder": "Primeiro e último nome...",
@@ -49,5 +49,13 @@
     "config-language-fr": "Francês",
     "config-tbl-hour": "Hora",
     "config-tbl-insulin": "Insulina/HC",
-    "config-tbl-fsi": "FSI correcção"
+    "config-tbl-fsi": "FSI correcção",
+    "tabela-title": "Pesquisa de alimentos",
+    "tabela-sub-title": "Apresenta a porção de HC por 100g",
+    "tabela-tbl-id": "Código",
+    "tabela-tbl-nome": "Alimento",
+    "tabela-tbl-hc": "HC/100g",
+    "tabela-tbl-info": "Detalhes",
+    "tabela-search": "Pesquisar Alimento",
+    "tabela-search-ph": "Pesquisa por nome de alimento..."
 }

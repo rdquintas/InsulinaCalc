@@ -4,7 +4,7 @@ const MODAL_TYPE_ERROR = 1;
 const MODAL_TYPE_INFO = 2;
 const MODAL_TYPE_RESULTS = 3;
 
-function initializeConfigurationData() {
+function loadConfigurationData() {
     $.getJSON("dados/catarina.json", function (oData) {
         if (oData) {
             _oConfigData = oData;
@@ -269,7 +269,7 @@ $(document).ready(function () {
     try {
         initializeModal();
         changeBackground();
-        initializeConfigurationData();
+        loadConfigurationData();
     } catch (error) {
         showModal($.localize.data.i18n["msg-error-app-start"], error, true);
     }

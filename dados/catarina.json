@@ -3,6 +3,13 @@
     "email": "quintascatarina1805@gmail.com",
     "selectedLanguage": "pt",
     "lastModifiedDate": "2021-01-31",
+    "tabelaAlimentos": {
+        "versaoOficial": "v4.1-2019",
+        "dataQueEstaNoExcel": "2020-08-11",
+        "dataEmQueFizDownload": "2021-01-31",
+        "url": "http://portfir.insa.pt",
+        "nomeDaInstituicao": "Instituto Nacional de Saúde Doutor Ricardo Jorge (INSA) e PORTFIR"
+    },
     "estados": {
         "doenca": 1.0,
         "jejum": 1.0,

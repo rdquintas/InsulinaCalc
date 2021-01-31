@@ -88,6 +88,14 @@ html {
   cursor: pointer;
 }
 
+.zrq-page-tabela .zrq-search {
+  max-width: 50%;
+}
+
+.zrq-page-tabela form {
+  padding: 3rem;
+}
+
 .zrq-page-configuration form {
   padding: 3rem;
 }
@@ -118,6 +126,14 @@ html {
 @media (max-width: 980px) {
   .zrq-page-index .zrq-form-padding {
     max-width: 100%;
+  }
+
+  .zrq-page-tabela .zrq-search {
+    max-width: 100%;
+  }
+
+  .zrq-page-tabela form {
+    padding: 0.5rem;
   }
 
   .zrq-page-configuration form {

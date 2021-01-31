@@ -1,6 +1,6 @@
 {
     "greeting": "Hi",
-    "menu-config": "Configuration",
+    "menu-config": "Profile data",
     "menu-home": "Go to calculator",
     "menu-documentation": "Documentation",
     "menu-tabela": "Food Table",
@@ -37,7 +37,7 @@
     "msg-error-getfsi": "getFSI does not work without a set date",
     "msg-error-getfsi-config": "It wasn't possible to obtain fsiCorreccao configured for this hour:",
     "config-window-title": "InsulinCalc | Configuration",
-    "config-title": "Here you can configure your profile",
+    "config-title": "These are your profile settings",
     "config-name": "Name",
     "config-lastmodif": "Last updated on",
     "config-name-placeholder": "First and last name...",
@@ -49,5 +49,13 @@
     "config-language-fr": "French",
     "config-tbl-hour": "Hour",
     "config-tbl-insulin": "Insulin/CH",
-    "config-tbl-fsi": "FSI correction"
+    "config-tbl-fsi": "FSI correction",
+    "tabela-title": "Search food",
+    "tabela-sub-title": "Shows the amount of carbs per 100g",
+    "tabela-tbl-id": "ID",
+    "tabela-tbl-nome": "Food name",
+    "tabela-tbl-hc": "Carbs/100g",
+    "tabela-tbl-info": "Details",
+    "tabela-search": "Search Food",
+    "tabela-search-ph": "Search for food name..."
 }

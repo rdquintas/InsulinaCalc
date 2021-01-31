@@ -40,7 +40,7 @@
     <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico" />
     <meta name="theme-color" content="#7952b3" />
   </head>
-  <body class="zrq-page-configuration">
+  <body class="zrq-page-tabela">
     <header>
       <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
@@ -130,71 +130,51 @@
       </div>
     </header>
     <form id="configurationForm">
-      <h3 data-localize="config-title"></h3>
-
-      <div class="col-md-3">
-        <label
-          for="name"
+      <h3 data-localize="tabela-title"></h3>
+      <h6 data-localize="tabela-sub-title"></h6>
+      <div class="col-md-3 input-group zrq-search">
+        <!-- <label
+          for="zrq-form-pesquisar"
           class="form-label"
-          data-localize="config-name"
-        ></label>
+          data-localize="tabela-search"
+        ></label> -->
         <input
-          id="zrq-form-name"
-          name="zrq-form-name"
+          id="zrq-form-pesquisar"
+          name="zrq-form-pesquisar"
           type="text"
           class="form-control"
         />
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          id="button-addon2"
+          onclick="onBtnClear();"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-trash-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+            />
+          </svg>
+        </button>
       </div>
+
       <div class="col-md-9"></div>
-      <!-- <div class="col-md-3">
-        <label
-          for="email"
-          class="form-label"
-          data-localize="config-email"
-        ></label>
-        <input
-          id="zrq-form-email"
-          name="zrq-form-email"
-          type="email"
-          class="form-control"
-        />
-      </div>
-      <div class="col-md-9"></div> -->
-      <div class="col-md-3">
-        <label
-          for="zrq-form-lastmodif"
-          class="form-label"
-          data-localize="config-lastmodif"
-        ></label>
-        <input
-          id="zrq-form-lastmodif"
-          name="zrq-form-lastmodif"
-          type="date"
-          class="form-control"
-        />
-      </div>
-      <div class="col-md-9"></div>
-      <!-- <div class="col-md-3">
-        <label
-          for="language"
-          class="form-label"
-          data-localize="config-language"
-        ></label>
-        <select id="zrq-language" name="zrq-language" class="form-select">
-          <option value="en" data-localize="config-language-en"></option>
-          <option value="pt" data-localize="config-language-pt"></option>
-          <option value="es" data-localize="config-language-es"></option>
-          <option value="fr" data-localize="config-language-fr"></option>
-        </select>
-      </div>
-      <div class="col-md-9"></div> -->
+
       <div class="col-sm-12 col-md-9 col-lg-6">
-        <table class="table table-striped">
+        <table id="zrq-food-table" class="table table-striped">
           <thead>
-            <tr>
-              <th scope="col" data-localize="config-tbl-hour"></th>
-              <th scope="col" data-localize="config-tbl-insulin"></th>
-              <th scope="col" data-localize="config-tbl-fsi"></th>
+            <tr class="myHead">
+              <th scope="col" data-localize="tabela-tbl-id"></th>
+              <th scope="col" data-localize="tabela-tbl-nome"></th>
+              <th scope="col" data-localize="tabela-tbl-hc"></th>
+              <th scope="col" data-localize="tabela-tbl-info"></th>
             </tr>
           </thead>
           <tbody id="zrq-table-body" />
@@ -247,6 +227,7 @@
     </div>
 
     <script src="js/lib/jquery-3.5.1.min.js"></script>
+    <script src="js/lib/loadingoverlay.min.js"></script>
     <script src="js/lib/bootstrap.bundle.min.js"></script>
     <script src="js/lib/jquery.localize.min.js"></script>
     <script src="js/tabela.js"></script>

@@ -1,7 +1,7 @@
 var _oConfigData;
 var _oModal;
 
-function initializeConfigurationData() {
+function loadConfigurationData() {
     $.getJSON("dados/catarina.json", function (oData) {
         if (oData) {
             _oConfigData = oData;
@@ -117,7 +117,7 @@ $(document).ready(function () {
     try {
         // initializeModal();
         // initializeButtonEvents();
-        initializeConfigurationData();
+        loadConfigurationData();
     } catch (error) {
         showModal("Não foi posível arrancar com a app.", error, true);
     }
