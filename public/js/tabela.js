@@ -2,7 +2,7 @@ var _oConfigData;
 var _oModal;
 
 function initializeConfigurationData() {
-    $.getJSON("dados/catarina.json", function (oData) {
+    $.getJSON("testData.json", function (oData) {
         if (oData) {
             _oConfigData = oData;
             initializeLocalization(_oConfigData.selectedLanguage);

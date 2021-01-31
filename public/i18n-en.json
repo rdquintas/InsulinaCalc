@@ -3,6 +3,7 @@
     "menu-config": "Configuration",
     "menu-home": "Go to calculator",
     "menu-documentation": "Documentation",
+    "menu-tabela": "Food Table",
     "menu-signout": "Sign out",
     "menu-info1": "This app was developed by",
     "menu-info2": ". Its goal is to allow people with type 1 diabetics to calculate their insulin intake easily and automatically. Please check the documentation for more information.<br>Any issue or suggestion please send me an email at <a href='mailto: rdquintas@yahoo.com'> rdquintas@yahoo.com</a>",

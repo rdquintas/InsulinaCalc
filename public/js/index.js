@@ -1,18 +1,3 @@
-
-// var zrq = firebase.database().ref('ricardo')
-// var database = firebase.database();
-
-// database.ref('/').once('value', function (snapshot) {
-//     debugger;
-//     console.log(snapshot.val());
-// });
-
-// zrq.once('value').then((snapshot) => {
-//     debugger;
-//     var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-
-// });
-
 var _oConfigData;
 var _oModal;
 const MODAL_TYPE_ERROR = 1;
@@ -20,7 +5,7 @@ const MODAL_TYPE_INFO = 2;
 const MODAL_TYPE_RESULTS = 3;
 
 function initializeConfigurationData() {
-    $.getJSON("testData.json", function (oData) {
+    $.getJSON("dados/catarina.json", function (oData) {
         if (oData) {
             _oConfigData = oData;
             _oConfigData.lastModifiedDate = new Date("1-15-2000 14:35:20");
