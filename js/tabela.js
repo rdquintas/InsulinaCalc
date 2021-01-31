@@ -190,7 +190,6 @@ function filterTable(sValue) {
 
 $('#zrq-form-pesquisar').on('keyup', function (oEvent) {
     var sValue = $(this).val();
-
     if (oEvent.keyCode === 27) {
         $("#zrq-form-pesquisar").val("");
         $("#zrq-table-body tr").remove();
@@ -206,6 +205,13 @@ function initializeModal() {
 }
 
 $(document).ready(function () {
+    $(window).keydown(function (event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
+
     try {
         $.LoadingOverlay("show");
         initializeModal();
