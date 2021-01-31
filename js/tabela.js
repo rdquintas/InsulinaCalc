@@ -178,10 +178,9 @@ function onBtnClear(sValue) {
 
 function filterTable(sValue) {
     var rePattern = new RegExp(sValue, "i");
-
     var arr = $(_aTabelaAlimentos)
         .filter(function (i, n) {
-            return n[ALIMENTO.NOME_ALIMENTO].search(rePattern) === 0;
+            return n[ALIMENTO.NOME_ALIMENTO].search(rePattern) !== -1;
         });
 
     refreshTableDOM(arr);
