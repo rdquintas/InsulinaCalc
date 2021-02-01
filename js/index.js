@@ -19,7 +19,7 @@ function loadConfigurationData() {
 }
 
 function changeBackground() {
-    var sNumber = (Math.floor(Math.random() * 100) + 1).toString();
+    var sNumber = (Math.floor(Math.random() * 5) + 1).toString();
     if (sNumber.length === 1) {
         sNumber = "00" + sNumber;
     }
@@ -28,7 +28,7 @@ function changeBackground() {
         sNumber = "0" + sNumber;
     }
 
-    var str = "url('img/patterns/image" + sNumber + ".png')";
+    var str = "url('img/patterns/lingrinhas/image" + sNumber + ".png')";
     $("body").css("background-image", str);
 }
 
