@@ -3,7 +3,7 @@ var _aTabelaAlimentos;
 var _oModal;
 const MODAL_TYPE_ERROR = 1;
 const MODAL_TYPE_INFO = 2;
-const MODAL_TYPE_RESULTS = 3;
+const MODAL_TYPE_FOOD_DETAILS = 3;
 
 const ALIMENTO = {
     CODIGO: "Cod",
@@ -65,7 +65,7 @@ function refreshTableDOM(aSelectedItems) {
         // sHtml += "<th scope='row'>" + oElement[ALIMENTO.CODIGO] + "</th>";
         sHtml += "<td>" + oElement[ALIMENTO.NOME_ALIMENTO] + "</td>";
         sHtml += "<td>" + oElement[ALIMENTO.HIDRATOS] + "</td>";
-        sHtml += "<td><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-info-circle-fill' viewBox='0 0 16 16'><path d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'/></svg></td>";
+        sHtml += "<td onclick='onClickDetails(" + oElement[ALIMENTO.CODIGO] + ")'><svg class='zrq-icon-details' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-info-circle-fill' viewBox='0 0 16 16'><path d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'/></svg></td>";
         sHtml += "</tr>";
     }
 
@@ -83,6 +83,13 @@ function initializeFormFields() {
     }
     else {
         throw "Não existem dados de configuração. Não é possível correr a função initializeFormFields";
+    }
+}
+
+function onClickDetails(sIdAlimento) {
+    var oElement = _aTabelaAlimentos.find(x => x[ALIMENTO.CODIGO] === sIdAlimento);
+    if (oElement) {
+        showModal(null, oElement, MODAL_TYPE_FOOD_DETAILS);
     }
 }
 
@@ -111,34 +118,61 @@ function showModal(sMsg, oDados, sType) {
                 sBody = sMsg;
             }
             $("#modalCSS").addClass(["bg-danger", "text-white", "bg-warning", "text-black"]);
+            $("#modalTitle").html(sTitle);
+            $("#modalText").html(sBody);
             break;
-        case MODAL_TYPE_RESULTS:
-            sTitle = $.localize.data.i18n["modal-title-doses"];
+        case MODAL_TYPE_FOOD_DETAILS:
             if (oDados) {
-                validaDados(oDados);
-                if (oDados.calculoDasDosesInsulina <= 0) {
-                    $("#modalCSS").addClass(["bg-warning", "text-black"]);
-                    sBody += "<p>" + $.localize.data.i18n["modal-title-warning"] + "</p>";
-                    sBody += "<h3>" + oDados.calculoDasDosesInsulina + "</h3>";
-                } else {
-                    $("#modalCSS").addClass(["bg-primary", "text-white"]);
-                    sBody += "<h3>" + oDados.calculoDasDosesInsulina + "</h3>";
+                $("#modalCSS").addClass(["bg-primary", "text-white"]);
+                var aKeys = getSortedObjectkeys(oDados);
+                var sCod = "";
+                var sNivel1 = "";
+                var sNivel2 = "";
+                var sNivel3 = "";
+
+                for (let i = 0; i < aKeys.length; i++) {
+                    switch (aKeys[i]) {
+                        case "Cod":
+                            sCod += "<p><strong>" + $.localize.data.i18n["tabela-tbl-id"] + ": </strong>" + oDados[aKeys[i]] + "</p>";
+                            break;
+                        case "Nome do alimento":
+                            sTitle += oDados[aKeys[i]];
+                            break;
+                        case "Nível 1":
+                            sNivel1 += "<p><strong>" + aKeys[i] + ": </strong>" + oDados[aKeys[i]] + "</p>";
+                            break;
+                        case "Nível 2":
+                            sNivel2 += "<p><strong>" + aKeys[i] + ": </strong>" + oDados[aKeys[i]] + "</p>";
+                            break;
+                        case "Nivel 3":
+                            sNivel3 += "<p><strong>" + aKeys[i] + ": </strong>" + oDados[aKeys[i]] + "</p>";
+                            break;
+                        default:
+                            sBody += "<p><strong>" + aKeys[i] + ": </strong>" + oDados[aKeys[i]] + "</p>";
+                            break;
+                    }
                 }
-
-                sBody += getAccordeonWithDetails(oDados);
-
             } else {
                 throw $.localize.data.i18n["msg-error-smodal-calc"];
             }
+            $("#modalTitle").html(sTitle);
+            $("#modalText").html(sCod + sNivel1 + sNivel2 + sNivel3 + "<hr/>" + sBody);
             break;
     }
 
-    $("#modalTitle").html(sTitle);
-    $("#modalText").html(sBody);
     _oModal.show()
 }
 
+function getSortedObjectkeys(obj) {
+    var aKeys = [];
 
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            aKeys.push(key);
+        }
+    }
+    return aKeys.sort();
+}
 
 function initializeLocalization(sLanguage) {
     try {

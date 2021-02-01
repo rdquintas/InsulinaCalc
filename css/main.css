@@ -96,6 +96,13 @@ html {
   padding: 3rem;
 }
 
+.zrq-page-tabela .zrq-icon-details {
+  cursor: pointer;
+}
+.zrq-page-tabela .zrq-icon-details:hover {
+  color: blue;
+}
+
 .zrq-page-configuration form {
   padding: 3rem;
 }
